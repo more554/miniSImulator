@@ -1,3 +1,66 @@
+/*Problemas de codigo:
+dos metodos preload()
+actionClick() declarado dentro de create = usar una funcion flecha 
+
+labelCounter es una variableLocal = this.labels.clickCounter
+this.STATS y this.stats nombre diferentes usar uno solo 
+
+/*los metodos como RicePlay() se declarar por separada y llamarse desde un boton
+
+-Entendiendo que this.stats.STAMINA = es el dato real del personaje 
+this.labels.STAMINA es el objeto de texto de Phaser el objeto isual que va a mosrare ese dato
+this.stats.STAMINA
+
+EJEMPLO:
+ this.stats.STAMINA -= 15; PRIMERO SE LE RESTA 15
+ al atributo 
+ this.labels.STAMINA.setText (
+ 'STAMINA: ' + this.stat.STAMINA  y despues se actualiza la interfaz del juegp
+ );
+this.labels.clickCounter = this.add.text(
+10,10,
+'Total Clicks: ' + this.PLAYER_CLICKS,
+{
+   fontSize : '20px',
+   color: '#ffffff'
+ }
+);
+
+//stamina label 
+this.labels.STAMINA = this.add.text(10,45, 'STAMINA: ' + this.stats.STAMINA,
+{
+  fontSize: '20px',
+  color: '#fffff'
+  }
+);
+//boton 
+this.btn = this.add.image(200,150, 'btn');
+
+this.btn.setInteractive({useHandCursor: true});
+
+this.btn.on('pointerdown', ()=>{
+ this.actionClick()
+	}); //la funcion flecga perimite llamar el metodo de la escena conservando el contexto de this.
+	
+}
+
+//ahora creo actionCLick();
+actionClick();
+this.PLAYER_CLIICKS ++;
+
+this.stats.STAMINA =  Math.max(0, this.stats.STAMINA -  15);
+//actualiza label 
+this.labels.STAMINA.setText(
+'STAMINA: ' + this.stats.STAMINA
+);
+
+console.log(.."se actualizo la stamina'+this.stats.STAMINA)
+
+
+ 
+*/
+
+
 class Main extends Phaser.Scene {
     constructor() {
         super({ key: 'main' });
